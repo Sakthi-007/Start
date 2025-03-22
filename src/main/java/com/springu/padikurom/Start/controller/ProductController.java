@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.springu.padikurom.Start.model.ProductDto;
 @RestController
 @RequestMapping("/app")
@@ -32,5 +29,25 @@ public class ProductController {
 
     }
 
+    @GetMapping("/products/{id}")
+    public ProductDto getProductById(
+            @PathVariable("id") int id
+    ){
+        for (ProductDto dto : dtos) {
+            if(dto.getProductId() == id)
+            {
+                return dto;
+            }
+
+        }
+        throw new RuntimeException("Product not found");
+    }
+    @PostMapping("/addProduct")
+    public ProductDto addProduct(
+                @RequestBody ProductDto dto
+        ){
+            dtos.add(dto);
+            return dto;
+        }
 
 }
