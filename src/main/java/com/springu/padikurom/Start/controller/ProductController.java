@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.springu.padikurom.Start.service.productServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.springu.padikurom.Start.model.ProductDto;
@@ -12,17 +13,9 @@ import com.springu.padikurom.Start.model.ProductDto;
 @RequestMapping("/app")
 public class ProductController {
 
-    productServiceImpl service = new productServiceImpl();
-//    List<ProductDto> dtos = new ArrayList<>();
-//
-//
-//    public ProductController()
-//    {
-//        dtos.add(new ProductDto(1, "Chair" , 4000 , "Infra"));
-//        dtos.add(new ProductDto(2, "Table" , 5000 , "Infra"));
-//        dtos.add(new ProductDto(3, "Fan" , 500 , "Electronics"));
-//
-//    }
+    @Autowired
+    productServiceImpl service ;
+
 
     @GetMapping(value="/products" )
     public List<ProductDto> getProducts()

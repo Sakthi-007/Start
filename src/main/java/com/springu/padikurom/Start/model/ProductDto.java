@@ -1,21 +1,24 @@
 package com.springu.padikurom.Start.model;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
 
 @Component
-//@Entity
+@Entity
 public class ProductDto {
-    //	@Id
+    @Id
     private int productId;
 
-    //	@Column
+    @Column(name="product_name")
     private String productName;
 
-    //	@Column
+    @Column(name="product_price")
     private Integer productPrice;
 
-    //	@Column
+    @Column(name="product_cat")
     private String productCatagory;
 
     public ProductDto() {
