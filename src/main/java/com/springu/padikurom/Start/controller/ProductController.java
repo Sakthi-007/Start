@@ -49,5 +49,20 @@ public class ProductController {
             dtos.add(dto);
             return dto;
         }
-
+        @PutMapping("/updateProduct/{id}")
+    public ProductDto updateProduct(
+            @PathVariable("id")int id,
+            @RequestBody ProductDto product
+        ) throws Exception {
+            for(ProductDto dto:dtos){
+                if(dto.getProductId()==id)
+                {
+                    dto.setProductName(product.getProductName());
+                    dto.setProductPrice(product.getProductPrice());
+                    dto.setProductCatagory(product.getProductCatagory());
+                    return dto;
+                }
+            }
+         throw new Exception("Product not found");
+        }
 }
