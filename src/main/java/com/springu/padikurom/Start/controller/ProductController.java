@@ -65,4 +65,18 @@ public class ProductController {
             }
          throw new Exception("Product not found");
         }
+
+        @DeleteMapping("/deleteProduct/{id}")
+        public String deleteProduct(
+                @PathVariable("id")int id
+        ){
+            for(ProductDto dto:dtos){
+                if(dto.getProductId()==id)
+                {
+                    dtos.remove(dto);
+                    return "Product Deleted";
+                }
+            }
+            return "Product not found";
+        }
 }
