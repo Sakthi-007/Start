@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class productServiceImpl implements productService{
 
@@ -35,8 +37,9 @@ public class productServiceImpl implements productService{
 
     @Override
     public ProductDto addProduct(ProductDto dto) {
-        ProductDto temp=repo.getReferenceById(dto.getProductId());
-        if(temp!=null)
+
+        Optional<ProductDto> temp=repo.findById(dto.getProductId());
+        if(temp.isPresent())
         {
             throw new ProductExistsAlready("Product with ID " + dto.getProductId() + " already exists");
 
@@ -63,5 +66,10 @@ public class productServiceImpl implements productService{
     @Override
     public List<ProductDto> findByName(String name) {
         return repo.findByProductName(name);
+    }
+
+    public int findProductCount(String name)
+    {
+        return repo.getProductCount(name);
     }
 }

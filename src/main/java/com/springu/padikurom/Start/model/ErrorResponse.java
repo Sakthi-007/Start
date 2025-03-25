@@ -20,7 +20,28 @@ public class ErrorResponse {
         this.msg = msg;
     }
 
+    public int getStatusCode() {
+        return statusCode;
+    }
 
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    @Override
+    public String toString() {
+        return "ErrorResponse{" +
+                "statusCode=" + statusCode +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }
 

@@ -54,4 +54,9 @@ public class ProductController {
         ) throws Exception {
             return service.deleteProduct(id);
         }
+    @GetMapping("/getCount")
+    public  int getProductCount(@RequestParam("productName") String productName)
+    {
+        return service.findProductCount(productName);
+    }
 }
