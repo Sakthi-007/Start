@@ -11,5 +11,5 @@ public interface productService {
     public ProductDto addProduct(ProductDto dto);
     public ProductDto updateProduct(int id, ProductDto product) throws Exception;
     public String deleteProduct(int id) throws Exception;
-
+    public List<ProductDto>findByName(String name);
 }

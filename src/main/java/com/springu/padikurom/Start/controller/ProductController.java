@@ -43,7 +43,11 @@ public class ProductController {
         ) throws Exception {
         return service.updateProduct(id, product);
     }
-
+    @GetMapping("/getByName")
+    public List<ProductDto> getProductByName(@RequestParam("productName") String productName)
+    {
+        return service.findByName(productName);
+    }
         @DeleteMapping("/deleteProduct/{id}")
         public String deleteProduct(
                 @PathVariable("id")int id
