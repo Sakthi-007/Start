@@ -2,6 +2,7 @@ package com.springu.padikurom.Start.service;
 
 import com.springu.padikurom.Start.model.ProductDto;
 import com.springu.padikurom.Start.repository.ProductRepo;
+import com.springu.padikurom.Start.response.ProductAlreadyExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,11 @@ public class productServiceImpl implements productService{
 
     @Override
     public ProductDto addProduct(ProductDto dto) {
+        ProductDto temp=repo.getReferenceById(dto.getProductId());
+        if(temp!=null)
+        {
+            throw new ProductAlreadyExists("Product with ID " + dto.getProductId() + " already exists");
+        }
         return repo.save(dto);
     }
 
